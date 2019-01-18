@@ -6,15 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.dappslocker.lib.Joker;
 import com.example.lib.appjokevisualizer.JokesVisualizerActivity;
 
 import static com.example.lib.appjokevisualizer.utility.Constants.JOKE;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements EndpointsAsyncTask.JokeReturnedHandler {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +39,18 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     public void tellJoke(View view) {
-        Joker joke = new Joker();
-        String aRandomJokeoke = joke.tellARandomJoke();
-        //Toast.makeText(this, joke.tellARandomJoke(), Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, JokesVisualizerActivity.class);
-        intent.putExtra(JOKE,aRandomJokeoke);
-        startActivity(intent);
+       new EndpointsAsyncTask().execute(this);
     }
 
 
+    @Override
+    public void joke(String aRandomJoke) {
+        Intent intent = new Intent(this, JokesVisualizerActivity.class);
+        intent.putExtra(JOKE,aRandomJoke);
+        startActivity(intent);
+    }
 }
