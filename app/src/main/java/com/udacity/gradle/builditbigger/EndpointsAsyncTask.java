@@ -2,6 +2,8 @@ package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
+import android.support.v4.util.Pair;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
@@ -14,6 +16,7 @@ import java.io.IOException;
 class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
+    private SimpleIdlingResource simpleIdlingResource;
     private JokeReturnedHandler jokeReturnedHandler;
     private Boolean errorFecthingJoke = false;
 
@@ -63,4 +66,5 @@ class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
             jokeReturnedHandler.joke(result);
         }
     }
+
 }
