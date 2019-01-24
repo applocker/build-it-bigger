@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/constraintlayoutProgressDialogContainer"
+    tools:showIn="@layout/fragment_main">
+
+    <ProgressBar
+        android:id="@+id/pb_loading_indicator"
+        android:layout_width="@dimen/progressBar_width"
+        android:layout_height="@dimen/progressBar_heigth"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/layout_margin_8"
+        android:layout_marginEnd="@dimen/layout_margin_8"
+        android:layout_marginLeft="@dimen/layout_margin_8"
+        android:layout_marginRight="@dimen/layout_margin_8"
+        android:layout_marginStart="@dimen/layout_margin_8"
+        android:layout_marginTop="@dimen/layout_margin_8"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView_error_loading_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin_16"
+        android:layout_marginStart="@dimen/layout_margin_8"
+        android:layout_marginLeft="@dimen/layout_margin_8"
+        android:layout_marginTop="@dimen/layout_margin_8"
+        android:layout_marginEnd="@dimen/layout_margin_8"
+        android:layout_marginRight="@dimen/layout_margin_8"
+        android:layout_marginBottom="@dimen/layout_margin_8"
+        android:text="@string/error_message"
+        android:textSize="@dimen/textSize_small"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

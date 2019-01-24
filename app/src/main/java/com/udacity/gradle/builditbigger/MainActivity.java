@@ -9,21 +9,52 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lib.appjokevisualizer.JokesVisualizerActivity;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.example.lib.appjokevisualizer.utility.Constants.JOKE;
 
 
 public class MainActivity extends AppCompatActivity implements EndpointsAsyncTask.JokeReturnedHandler {
+    @SuppressWarnings("WeakerAccess")
+    @BindView(R.id.pb_loading_indicator)   ProgressBar mLoadingIndicator;
+
+    @SuppressWarnings("WeakerAccess")
+    @BindView(R.id.textView_error_loading_message)   TextView mErrorLoadingMessage;
+
     private SimpleIdlingResource mIdlingResource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        dismissLoadingIndicators();
     }
+
+    private void dismissLoadingIndicators() {
+        mLoadingIndicator.setVisibility(View.INVISIBLE);
+        mErrorLoadingMessage.setVisibility(View.INVISIBLE);
+    }
+
+    private void showProgress() {
+        mLoadingIndicator.setVisibility(View.VISIBLE);
+        mErrorLoadingMessage.setVisibility(View.INVISIBLE);
+    }
+
+    private void showErrorMessage() {
+        mLoadingIndicator.setVisibility(View.INVISIBLE);
+        mErrorLoadingMessage.setVisibility(View.VISIBLE);
+        mErrorLoadingMessage.setText(getResources().getString(R.string.error_message));
+    }
+
 
 
     @Override
@@ -53,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements EndpointsAsyncTas
         }
         mIdlingResource.setIdleState(false);
         new EndpointsAsyncTask().execute(this);
+        showProgress();
     }
 
 
@@ -60,13 +92,13 @@ public class MainActivity extends AppCompatActivity implements EndpointsAsyncTas
     public void joke(String aRandomJoke) {
         mIdlingResource.setIdleState(true);
         if(aRandomJoke.contains(getResources().getString(R.string.joke_prefix))){
+            dismissLoadingIndicators();
             Intent intent = new Intent(this, JokesVisualizerActivity.class);
             intent.putExtra(JOKE,aRandomJoke);
-
             startActivity(intent);
         }
         else{
-            Toast.makeText(this,aRandomJoke,Toast.LENGTH_LONG).show();
+            showErrorMessage();
         }
 
     }

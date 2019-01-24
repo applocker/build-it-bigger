@@ -66,6 +66,10 @@ dependencies {
 
     implementation 'com.google.code.findbugs:jsr305:3.0.1'
 
+    //butter dependencies
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
     //test
     androidTestImplementation('com.android.support.test.espresso:espresso-core:' + espressoVersion, {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -79,6 +83,7 @@ dependencies {
 
     //project dependencies
     api project(":appjokevisualizer")
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 
 }
 
