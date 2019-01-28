@@ -1,3 +1,12 @@
+
+Solution to the Build it Bigger Project 
+
+References:
+I have referenced the Udacity course materials the Android nano degree "Gradle for Android and Java"
+and Android developers website
+
+
+
 # Gradle for Android and Java Final Project
 
 In this project, you will create an app with multiple flavors that uses
