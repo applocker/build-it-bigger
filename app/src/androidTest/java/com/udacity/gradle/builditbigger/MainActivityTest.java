@@ -59,7 +59,7 @@ public class MainActivityTest {
     @Test
     public void JokeRetreivedGceIsAnExtraInTheIntent() {
         final String jokePrefix = "Joke";
-        Matcher<Intent> intent = allOf(IntentMatchers.hasExtra(containsString(JOKE),containsString(jokePrefix)));
+        @SuppressWarnings("unchecked") Matcher<Intent> intent = allOf(IntentMatchers.hasExtra(containsString(JOKE),containsString(jokePrefix)));
         onView(ViewMatchers.withId(R.id.button_get_joke)).perform(click());
         intended(intent);
     }

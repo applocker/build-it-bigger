@@ -5,6 +5,7 @@ public class MyBean {
 
     private String myData;
 
+    @SuppressWarnings("unused")
     public String getData() {
         return myData;
     }

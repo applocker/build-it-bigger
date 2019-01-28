@@ -2,7 +2,8 @@ package com.dappslocker.lib;
 
 public class Joker {
 
-    String [] jokes = {
+    @SuppressWarnings("CanBeFinal")
+    private String [] jokes = {
             "Joke 0: Why did the Chicken cross the road? To get to the other side",
             "Joke 1: Why did the Monkey cross the road? To get to the other side",
             "Joke 2: Why did the Rabbit cross the road? To get to the other side",

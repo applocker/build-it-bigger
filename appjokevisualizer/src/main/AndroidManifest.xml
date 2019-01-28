@@ -6,7 +6,7 @@
         <activity
             android:name=".JokesVisualizerActivity"
             android:label="@string/title_activity_jokes_visualizer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

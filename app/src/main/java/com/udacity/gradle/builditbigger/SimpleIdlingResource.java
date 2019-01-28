@@ -15,6 +15,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * A very simple implementation of {@link IdlingResource}.
  */
 
+@SuppressWarnings("WeakerAccess")
 public class SimpleIdlingResource implements IdlingResource {
 
     @Nullable

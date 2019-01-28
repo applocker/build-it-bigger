@@ -47,10 +47,6 @@ android {
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
     }
-
-    lintOptions {
-        abortOnError false
-    }
 }
 
 dependencies {
@@ -61,33 +57,32 @@ dependencies {
     implementation "com.android.support:animated-vector-drawable:${supportLibVersion}"
     implementation "com.android.support:support-media-compat:${supportLibVersion}"
     freeImplementation 'com.google.android.gms:play-services-ads:11.8.0'
-    implementation 'com.google.api-client:google-api-client:1.23.0'
-    implementation 'com.google.http-client:google-http-client-android:1.23.0'
+    implementation 'com.google.api-client:google-api-client:1.25.0'
+    implementation 'com.google.http-client:google-http-client-android:1.24.1'
 
-    implementation 'com.google.code.findbugs:jsr305:3.0.1'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
     //butter dependencies
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //test
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:' + espressoVersion, {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     testImplementation 'junit:junit:4.12'
+    androidTestImplementation'com.android.support.test.espresso:espresso-core:' + espressoVersion
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:' + espressoVersion
     implementation 'com.android.support.test.espresso:espresso-idling-resource:' + espressoVersion
     androidTestImplementation 'com.android.support.test:rules:' + rootProject.runnerVersion
     androidTestImplementation 'com.android.support.test:runner:' + rootProject.runnerVersion
-
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 
     //project dependencies
     api project(":appjokevisualizer")
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 
 }
 
 configurations.all {
+    exclude module: 'httpclient'
+    exclude module: 'commons-logging'
     resolutionStrategy {
         force "com.android.support:appcompat-v7:${supportLibVersion}"
         force "com.android.support:support-v4:${supportLibVersion}"

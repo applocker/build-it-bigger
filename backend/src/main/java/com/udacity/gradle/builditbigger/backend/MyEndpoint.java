@@ -8,6 +8,7 @@ import com.google.api.server.spi.config.ApiNamespace;
 import javax.inject.Named;
 
 /** An endpoint class we are exposing */
+@SuppressWarnings("DefaultAnnotationParam")
 @Api(
         name = "myApi",
         version = "v1",

@@ -22,7 +22,7 @@ public class JokesVisualizerActivityFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_jokes_visualizer, container, false);
-        Intent intent = getActivity().getIntent();
+        @SuppressWarnings("ConstantConditions") Intent intent = getActivity().getIntent();
         if(intent != null && intent.hasExtra(JOKE)){
             String joke = intent.getStringExtra(JOKE);
             TextView textView = view.findViewById(R.id.textViewJoke);
